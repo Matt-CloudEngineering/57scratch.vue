@@ -4,13 +4,12 @@
 
 <h2>This is the 57Scratch Project Creation Page</h2>
 	@isset($project->id)
-		@if($project->id)
-			<form method="POST" action="/projects/{{ $project->id}}">
-				@method('PATCH')
-		@else
-			<form method="POST" action="/projects">
-		@endif
+		<form method="POST" action="/projects/{{ $project->id}}">
+		@method('PATCH')
 	@endisset
+	@empty($project->id)
+			<form method="POST" action="/projects">
+	@endempty
 	@csrf
 	<div class="field">
 		<label class="label">Project</label>
