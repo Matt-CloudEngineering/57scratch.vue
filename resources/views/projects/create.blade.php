@@ -24,10 +24,11 @@
 		@isset($project->id)
 			@if($project->id)
 				<button class="button" type="Submit">Update Project</button>
-			@else
-				<button class="button" type="Submit">Create Project</button>
 			@endif
 		@endisset
+		@empty($project->id)
+			<button class="button" type="Submit">Create Project</button>
+		@endempty
 	</div>
 
 	<div class="field">
