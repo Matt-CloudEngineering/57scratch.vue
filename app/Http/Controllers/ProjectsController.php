@@ -36,8 +36,8 @@ class ProjectsController extends Controller
 
         $project = new Project();
 
-        $project->title = $attributes;
-        $project->description = $attributes;
+        $project->title = $attributes['title'];
+        $project->description = $attributes['description'];
 
         $project->save();
 
