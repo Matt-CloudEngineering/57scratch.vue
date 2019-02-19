@@ -1,4 +1,4 @@
-<div class="section">
+<div>
 	@if($errors->any())
 		<div class="notification is-danger">
 			<ul>

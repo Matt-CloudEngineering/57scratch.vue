@@ -76,7 +76,16 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $attributes = request()->validate(['title' => 'required','description' => 'required']);
+
+        $project = new Project();
+
+        $project->title = $attributes['title'];
+        $project->description = $attributes['description'];
+
+        $project->save();
+
+        return redirect ('./projects');
     }
 
     /**
@@ -87,6 +96,10 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $project = Project::findorfail($id);
+
+        $project->delete();
+
+        return redirect ('./projects');
     }
 }

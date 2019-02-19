@@ -74,6 +74,9 @@ class ProjectTaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
+
+    
+    
     public function update(Request $request, Task $task)
     {
         $task->update([
