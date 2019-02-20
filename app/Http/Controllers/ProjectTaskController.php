@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Task;
-use App\Project;   
+use App\Project;
+
 use Illuminate\Http\Request;
 
 class ProjectTaskController extends Controller
@@ -75,8 +76,8 @@ class ProjectTaskController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    
-    
+
+
     public function update(Request $request, Task $task)
     {
         $task->update([
@@ -92,8 +93,14 @@ class ProjectTaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Task $task)
+    public function destroy(Project $project, Task $task)
     {
-        //
+        $task2d = Task::findorfail($task->id);
+        $project2 = Project::findorfail($project->id);
+
+        $task2d->delete();
+
+        return back();
+        /*return view('projects.project', compact('project'));*/
     }
 }

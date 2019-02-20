@@ -35,6 +35,6 @@
 
 		</div>
 
-	<a class="navbar-item" href="./create">Create</a>
+	<a class="navbar-item" href="projects/create">Create</a>
 
 @endsection
