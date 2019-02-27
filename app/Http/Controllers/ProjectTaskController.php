@@ -35,13 +35,11 @@ class ProjectTaskController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Project $project, Request $request)
+    public function store(Project $project)
     {
-        $attributes = request()->validate(['description' => 'required']);
-
-        //dd($attributes['description']);
-
-        $project->addTask($attributes['description']);
+        $project->addTask(
+            request()->validate(['description' => 'required'])
+        );
 
         return back();
     }
@@ -78,12 +76,20 @@ class ProjectTaskController extends Controller
 
 
 
-    public function update(Request $request, Task $task)
+    public function update(Task $task)
     {
-        $task->update([
-            'completed' => request()->has('completed')
-        ]);
+        /*if (request()->has('completed')) {
+            $task->complete();
+        } else {
+            $task->incomplete();
+        }*/
 
+        // request()->has('completed') ? $task->complete() : $task->incomplete();
+
+        $method = request()->has('completed') ? 'complete' : 'incomplete';
+
+        $task->$method();
+ 
         return back();
     }
 

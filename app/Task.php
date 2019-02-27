@@ -9,7 +9,18 @@ class Task extends Model
 
 	protected $guarded = [];
 
-	public function project() {
+	public function complete($completed = true) 
+	{
+		$this->update(compact('completed'));
+	}
+
+	public function incomplete($completed = false) 
+	{
+		$this->complete(false);
+	}
+	
+	public function project() 
+	{
 	 	return $this->belongsTo(Project::class);
 	}
  }
