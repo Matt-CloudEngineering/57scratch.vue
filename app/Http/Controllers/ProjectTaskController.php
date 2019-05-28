@@ -74,25 +74,6 @@ class ProjectTaskController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
-
-    public function update(Task $task)
-    {
-        /*if (request()->has('completed')) {
-            $task->complete();
-        } else {
-            $task->incomplete();
-        }*/
-
-        // request()->has('completed') ? $task->complete() : $task->incomplete();
-
-        $method = request()->has('completed') ? 'complete' : 'incomplete';
-
-        $task->$method();
- 
-        return back();
-    }
-
     /**
      * Remove the specified resource from storage.
      *

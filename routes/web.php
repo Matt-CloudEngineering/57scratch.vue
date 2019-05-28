@@ -13,9 +13,20 @@
 
 Route::get('/', 'PagesController@home');
 Route::get('/home', 'PagesController@home');
+
+Auth::routes();
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
 Route::get('/about', 'PagesController@about');
 
 Route::resource('/projects', 'ProjectsController');
 
 Route::post('/projects/{project}/tasks', 'ProjectTaskController@store');
-Route::resource('/tasks', 'ProjectTaskController');
+/*Route::resource('/tasks', 'ProjectTaskController');*/
+
+Route::post('/completed-tasks/{task}', 'CompletedTasksController@store');
+Route::delete('/completed-tasks/{task}', 'CompletedTasksController@destroy');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

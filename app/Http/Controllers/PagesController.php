@@ -7,16 +7,15 @@ use Illuminate\Http\Request;
 class PagesController extends Controller
 {
     public function home() {
-
-    	    return view('index')->with([
-    	    	'projects' => [
-    	    	    	'TrevsAutomotive.com',
-    	    			'DiveBarNYC.com',
-    	    			'Oakbrookcommons.com'
-    	    		],
-    	    		'title' => 'Home', 
-                    'description' => 'The detailed description of our about page, Duh!'
-	    	]);
+	    return view('index')->with([
+	    	'projects' => [
+	    	    	'TrevsAutomotive.com',
+	    			'DiveBarNYC.com',
+	    			'Oakbrookcommons.com'
+	    		],
+	    		'title' => 'Home', 
+                'description' => 'The detailed description of our about page, Duh!'
+    	]);
     }
 
     public function about() {

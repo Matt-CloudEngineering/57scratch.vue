@@ -2,8 +2,7 @@
 
 @section('content')
 
-	<div class="title">Project Page</div>
-	
+	<div class="title">Project Page</div>	
 
 		<div class="tile is-ancestor">
 			<div class="tile is-horisontal">
@@ -15,8 +14,10 @@
 							@if ($project->tasks->count())
 								@foreach ($project->tasks as $task)
 									<div>
-										<form method="POST" action="tasks/{{ $task->id }}">
-											@method('PATCH')
+										<form method="POST" action="/completed-tasks/{{ $task->id }}">
+											@if ($task->completed)
+												@method('DELETE')
+											@endif
 											@csrf
 											<label class="checkbox {{ $task->completed ? 'is-completed' : ''}}" for="completed">
 												<input type="checkbox" name="completed" onchange="this.form.submit()" {{ $task->completed ? 'checked' : ''}}>

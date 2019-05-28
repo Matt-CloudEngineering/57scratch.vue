@@ -27,8 +27,10 @@
 										@foreach ($project->tasks as $task)
 											<div>
 												<div class="is-inline-flex">
-													<form method="POST" action="../tasks/{{ $task->id }}">
-														@method('PATCH')
+													<form method="POST" action="/completed-tasks/{{ $task->id }}">
+														@if ($task->completed)
+															@method('DELETE')
+														@endif
 														@csrf
 														<label class="checkbox {{ $task->completed ? 'is-completed' : ''}}" for="completed">
 															<input type="checkbox" name="completed" onchange="this.form.submit()" {{ $task->completed ? 'checked' : ''}}> {{ $task->description }}

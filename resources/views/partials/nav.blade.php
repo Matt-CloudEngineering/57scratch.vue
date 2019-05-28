@@ -43,14 +43,26 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
-        <div class="buttons">
-          <a class="button is-primary">
-            <strong>Sign up</strong>
-          </a>
-          <a class="button is-light">
-            Log in
-          </a>
-        </div>
+        @if (Route::has('login'))
+            <div class="top-right links">
+                @auth
+                    <a href="{{ url('/home') }}">Home</a> | 
+                    <a href="{{ url('/logout') }}">Logout</a>
+                @else
+                  <div class="buttons">
+                    <a href="{{ route('register') }}"" class="button is-primary">
+                      <strong>Sign up</strong>
+                    </a>
+                    @if (Route::has('register'))
+                    <a href="{{ route('login') }}" class="button is-light">
+                      Log in
+                    </a>
+                  </div>
+                    @endif
+                @endauth
+            </div>
+        @endif
+
       </div>
     </div>
   </div>
